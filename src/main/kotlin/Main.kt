@@ -14,7 +14,7 @@ fun main() {
     library.listAvailableBooks().forEach { println(it.title) }
 
     // Emprestando um livro com base na escolha do usuário
-    val bookToBorrow = book2 // Pode ser qualquer livro disponível
+    val bookToBorrow = book3 // Pode ser qualquer livro disponível
     println("\nEmprestando '${bookToBorrow.title}'...")
     if (library.borrowBook(bookToBorrow)) {
         println("'${bookToBorrow.title}' foi emprestado com sucesso!")
