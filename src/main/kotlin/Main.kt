@@ -13,20 +13,13 @@ fun main() {
     println("Livros disponíveis na biblioteca:")
     library.listAvailableBooks().forEach { println(it.title) }
 
-    // Emprestando o primeiro livro
-    println("\nEmprestando '1984'...")
-    if (library.borrowBook(book1)) {
-        println("'1984' foi emprestado com sucesso!")
+    // Emprestando um livro com base na escolha do usuário
+    val bookToBorrow = book2 // Pode ser qualquer livro disponível
+    println("\nEmprestando '${bookToBorrow.title}'...")
+    if (library.borrowBook(bookToBorrow)) {
+        println("'${bookToBorrow.title}' foi emprestado com sucesso!")
     } else {
-        println("'1984' não está disponível para empréstimo.")
-    }
-
-    // Tentando emprestar o mesmo livro novamente
-    println("\nTentando emprestar '1984' novamente...")
-    if (library.borrowBook(book1)) {
-        println("'1984' foi emprestado com sucesso!")
-    } else {
-        println("'1984' não está disponível para empréstimo.")
+        println("'${bookToBorrow.title}' não está disponível para empréstimo.")
     }
 
     // Listando livros disponíveis após o empréstimo
@@ -34,9 +27,9 @@ fun main() {
     library.listAvailableBooks().forEach { println(it.title) }
 
     // Devolvendo o livro emprestado
-    println("\nDevolvendo '1984'...")
-    library.returnBook(book1)
-    println("'1984' foi devolvido.")
+    println("\nDevolvendo '${bookToBorrow.title}'...")
+    library.returnBook(bookToBorrow)
+    println("'${bookToBorrow.title}' foi devolvido.")
 
     // Listando livros disponíveis após a devolução
     println("\nLivros disponíveis após a devolução:")
