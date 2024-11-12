@@ -56,4 +56,31 @@ class LibraryTest : StringSpec({
         library.listAvailableBooks() shouldContain book1
         library.listAvailableBooks() shouldNotContain book2
     }
+
+    "should remove a book from the library" {
+        val library = Library()
+        val book = Book("Test Book", "Test Author")
+        library.addBook(book)
+
+        val result = library.removeBook(book)
+
+        result shouldBe true
+        library.listAvailableBooks() shouldNotContain book
+    }
+
+    "should not remove a book that is not in the library" {
+        val library = Library()
+        val book = Book("Nonexistent Book", "Unknown Author")
+
+        val result = library.removeBook(book)
+
+        result shouldBe false
+    }
+
+    "should return an empty list when no books are in the library" {
+        val library = Library()
+
+        library.listAvailableBooks() shouldBe emptyList()
+    }
+
 })
