@@ -1,5 +1,9 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldNotContain
+import io.kotest.matchers.shouldBe
+
 class LibraryTest : StringSpec({
 
     // Inicializa a biblioteca e os livros antes de cada teste
@@ -51,5 +55,56 @@ class LibraryTest : StringSpec({
 
         availableBooks.size shouldBe 2 //1
         availableBooks.first().title shouldBe "Brave New World"
+    }
+    "should add a book to the library" {
+        val library = Library()
+        val book = Book("Test Book", "Test Author")
+
+        library.addBook(book)
+
+        library.listAvailableBooks() shouldContain book
+    }
+    "should borrow a book successfully" {
+        val library = Library()
+        val book = Book("Test Book", "Test Author")
+        library.addBook(book)
+
+        val result = library.borrowBook(book)
+
+        result shouldBe true
+        book.isAvailable shouldBe false
+    }
+
+    "should not borrow an unavailable book" {
+        val library = Library()
+        val book = Book("Test Book", "Test Author", isAvailable = false)
+        library.addBook(book)
+
+        val result = library.borrowBook(book)
+
+        result shouldBe false
+    }
+    "should remove a book from the library" {
+        val library = Library()
+        val book = Book("Test Book", "Test Author")
+        library.addBook(book)
+
+        val result = library.removeBook(book)
+
+        result shouldBe true
+        library.listAvailableBooks() shouldNotContain book
+    }
+    "should not remove a book that is not in the library" {
+        val library = Library()
+        val book = Book("Nonexistent Book", "Unknown Author")
+
+        val result = library.removeBook(book)
+
+        result shouldBe false
+    }
+    "should return an empty list when no books are in the library" {
+        val library = Library()
+
+        library.listAvailableBooks() shouldBe emptyList()
     }
 })
