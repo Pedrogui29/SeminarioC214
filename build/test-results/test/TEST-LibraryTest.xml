@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="LibraryTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-11-07T02:41:44" hostname="JURUCA" time="0.04">
+<testsuite name="LibraryTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2024-11-13T01:29:29" hostname="NATACHA" time="0.164">
   <properties/>
-  <testcase name="should add a book to the library" classname="LibraryTest" time="0.031"/>
-  <testcase name="should borrow a book successfully" classname="LibraryTest" time="0.001"/>
-  <testcase name="should not borrow an unavailable book" classname="LibraryTest" time="0.001"/>
-  <testcase name="should return a borrowed book" classname="LibraryTest" time="0.0"/>
+  <testcase name="should add books to the library" classname="LibraryTest" time="0.056"/>
+  <testcase name="should borrow an available book" classname="LibraryTest" time="0.001"/>
+  <testcase name="should not borrow a book that is already borrowed" classname="LibraryTest" time="0.002"/>
+  <testcase name="should return a borrowed book" classname="LibraryTest" time="0.003"/>
+  <testcase name="should list only available books" classname="LibraryTest" time="0.001"/>
+  <testcase name="should add a book to the library" classname="LibraryTest" time="0.012"/>
+  <testcase name="should borrow a book successfully" classname="LibraryTest" time="0.003"/>
+  <testcase name="should not borrow an unavailable book" classname="LibraryTest" time="0.002"/>
+  <testcase name="should remove a book from the library" classname="LibraryTest" time="0.007"/>
+  <testcase name="should not remove a book that is not in the library" classname="LibraryTest" time="0.002"/>
+  <testcase name="should return an empty list when no books are in the library" classname="LibraryTest" time="0.005"/>
+  <testcase name="should correctly handle borrowing a book and make it unavailable" classname="LibraryTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

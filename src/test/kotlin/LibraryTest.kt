@@ -1,4 +1,5 @@
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldNotContain
@@ -106,5 +107,15 @@ class LibraryTest : StringSpec({
         val library = Library()
 
         library.listAvailableBooks() shouldBe emptyList()
+    }
+
+    "should correctly handle borrowing a book and make it unavailable" {
+        val library = Library()
+        val book = Book("Borrowed Book", "Author X")
+
+        library.addBook(book)
+        library.borrowBook(book) shouldBe true
+        library.listAvailableBooks().shouldBeEmpty()
+        book.isAvailable shouldBe false
     }
 })
