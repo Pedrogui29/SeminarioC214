@@ -4,6 +4,10 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.shouldBe
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
+
 
 class LibraryTest : StringSpec({
 
@@ -118,4 +122,23 @@ class LibraryTest : StringSpec({
         library.listAvailableBooks().shouldBeEmpty()
         book.isAvailable shouldBe false
     }
+
+    "should mock the borrowBook method" {
+        // Criando um mock da classe Library
+        val library = mockk<Library>()
+        val book = Book("Mocked Book", "Mock Author")
+
+        // Simulando o comportamento de um método específico
+        every { library.borrowBook(book) } returns true
+
+        // Chamando o método mockado
+        val result = library.borrowBook(book)
+
+        // Verificando o resultado
+        result shouldBe true
+
+        // Verificando se o método foi chamado exatamente uma vez
+        verify(exactly = 1) { library.borrowBook(book) }
+    }
+
 })

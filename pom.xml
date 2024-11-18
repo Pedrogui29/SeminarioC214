@@ -115,6 +115,15 @@
             <version>5.10.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Dependência do MockK -->
+        <dependency>
+            <groupId>io.mockk</groupId>
+            <artifactId>mockk</artifactId>
+            <version>1.13.4</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
