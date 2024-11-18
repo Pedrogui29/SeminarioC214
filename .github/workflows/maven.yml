@@ -60,4 +60,4 @@ jobs:
         run: npm install nodemailer
 
       - name: Send Notification
-        run: node send_notification.js
+        run: node mail.js
