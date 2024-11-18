@@ -4,14 +4,14 @@ async function sendEmail() {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'your_email@gmail.com',  // Substitua pelo seu e-mail
-            pass: 'your_password'         // Substitua pela sua senha ou app password
+            user: 'pedropgfo@gmail.com',  // Substitua pelo seu e-mail
+            pass: 'arpe txyg sudr ubib'         // Substitua pela sua senha ou app password
         },
     });
 
     let info = await transporter.sendMail({
         from: '"Pipeline Notifier" <your_email@gmail.com>',
-        to: "destinatario@gmail.com",
+        to: "pedropgfo@gmail.com",
         subject: "Status do Pipeline",
         text: `Workflow: ${process.env.GITHUB_WORKFLOW}
 Repository: ${process.env.GITHUB_REPOSITORY}
