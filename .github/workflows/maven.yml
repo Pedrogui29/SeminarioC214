@@ -49,13 +49,15 @@ jobs:
 
   notify:
     runs-on: ubuntu-latest
-    needs: [build, test]
-    if: always()
-
+    needs: [ build, test ]
     steps:
-    - name: Log workflow status
-      run: |
-        echo "Workflow Name: ${{ github.workflow }}"
-        echo "Event Triggered: ${{ github.event_name }}"
-        echo "Repository: ${{ github.repository }}"
-        echo "Workflow Conclusion: ${{ job.status }}"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install nodemailer
+
+      - name: Send Email
+        run: node send-email.js
