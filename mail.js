@@ -1,17 +1,18 @@
+require('dotenv').config(); // Se necessário para carregar variáveis locais em dev
 const nodemailer = require('nodemailer');
 
 async function sendEmail() {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'pedropgfo@gmail.com',  // Substitua pelo seu e-mail
-            pass: 'arpe txyg sudr ubib'         // Substitua pela sua senha ou app password
+            user: process.env.EMAILUSERNAMEID,  // Variável de ambiente do GitHub para o e-mail
+            pass: process.env.EMAILPASSWORDID  // Variável de ambiente do GitHub para a senha
         },
     });
 
     let info = await transporter.sendMail({
-        from: '"Pipeline Notifier" <your_email@gmail.com>',
-        to: "pedropgfo@gmail.com",
+        from: '"Pipeline Notifier" <' + process.env.EMAILUSERNAMEID + '>',
+        to: process.env.EMAILUSERNAMEID, // Substitua conforme necessário
         subject: "Status do Pipeline",
         text: `Workflow: ${process.env.GITHUB_WORKFLOW}
 Repository: ${process.env.GITHUB_REPOSITORY}
