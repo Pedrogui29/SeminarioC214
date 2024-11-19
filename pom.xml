@@ -49,7 +49,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+                    <outputDirectory>${project.build.directory}/test-annotations</outputDirectory>
                     <dataFile>${project.build.directory}/jacoco.exec</dataFile>
                 </configuration>
             </plugin>
