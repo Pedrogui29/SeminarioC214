@@ -15,4 +15,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    reports {
+        html.required.set(true)  // Gera relatório em HTML
+        junitXml.required.set(true)  // Gera relatório em formato XML
+    }
 }
