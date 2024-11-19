@@ -30,6 +30,12 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Upload de Artefatos
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pacote
+        path: SeminarioC214/target/*.jar
+
   test:
 
     runs-on: ubuntu-latest
@@ -45,7 +51,13 @@ jobs:
         cache: maven
 
     - name: Run Tests
-      run: mvn test
+      run: mvn clean test site
+
+    - name: Upload de Artefatos
+      uses: actions/upload-artifact@v3
+      with:
+        name: Relatorio de Testes
+        path: SeminarioC214/target/site/
 
   notify:
     runs-on: ubuntu-latest
