@@ -51,13 +51,13 @@ jobs:
         cache: maven
 
     - name: Run Tests
-      run: mvn clean test site
+      run: mvn clean test
 
     - name: Upload de Artefatos
       uses: actions/upload-artifact@v3
       with:
         name: Relatorio de Testes
-        path: SeminarioC214/target/site/
+        path: SeminarioC214/target/surefire-reports/
 
   notify:
     runs-on: ubuntu-latest
