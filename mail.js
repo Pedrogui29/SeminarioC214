@@ -5,8 +5,8 @@ async function sendEmail() {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.EMAILUSERNAMEID,  // Variável de ambiente do GitHub para o e-mail
-            pass: process.env.EMAILPASSWORDID  // Variável de ambiente do GitHub para a senha
+            user: process.env.EMAIL_USERNAME, // Variável de ambiente do GitHub para o e-mail
+            pass: process.env.EMAIL_PASSWORD // Variável de ambiente do GitHub para a senha
         },
     });
 
