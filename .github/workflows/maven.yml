@@ -54,10 +54,18 @@ jobs:
       run: mvn clean test
 
     - name: Upload de Artefatos
+      if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: Relatorio de Testes
+        name: test-results
         path: target/surefire-reports/
+
+    - name: Save Coverage Report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: coverage-report
+        path: target/site/jacoco/
 
   notify:
     runs-on: ubuntu-latest
